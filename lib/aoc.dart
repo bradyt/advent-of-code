@@ -639,6 +639,18 @@ const String occupied = '#';
 const String empty = 'L';
 const String floor = '.';
 
+class Vector {
+  Vector({this.row, this.column});
+
+  final int row;
+  final int column;
+
+  Vector operator +(Object other) => Vector(
+        row: row + (other as Vector).row,
+        column: column + (other as Vector).column,
+      );
+}
+
 class Matrix {
   Matrix(List<List<String>> matrix) : _matrix = matrix;
 
@@ -651,67 +663,93 @@ class Matrix {
       .map((row) => row.where((value) => value == occupied).length)
       .reduce((x, y) => x + y);
 
-  String valueAt({int row, int column}) => _matrix[row][column];
+  String valueAt(Vector position) => _matrix[position.row][position.column];
 
-  List<String> _adjacentValues({int row, int column}) => [
-        [-1, -1],
-        [-1, 0],
-        [-1, 1],
-        [0, -1],
-        [0, 1],
-        [1, -1],
-        [1, 0],
-        [1, 1],
-      ]
-          .map((delta) => [row + delta[0], column + delta[1]])
-          .where((position) =>
-              _positionIsValid(row: position[0], column: position[1]))
-          .map((position) => _matrix[position[0]][position[1]])
-          .toList();
+  var directions = [
+    Vector(row: -1, column: -1),
+    Vector(row: -1, column: 0),
+    Vector(row: -1, column: 1),
+    Vector(row: 0, column: -1),
+    Vector(row: 0, column: 1),
+    Vector(row: 1, column: -1),
+    Vector(row: 1, column: 0),
+    Vector(row: 1, column: 1),
+  ];
 
-  bool _positionIsValid({int row, int column}) =>
-      row >= 0 &&
-      row < _numberOfRows &&
-      column >= 0 &&
-      column < _numberOfColumns;
+  String _visibleSeat({Vector position, Vector direction}) {
+    var newPosition = position + direction;
 
-  bool _atLeastFourAdjacentOccupied({int row, int column}) =>
-      _adjacentValues(row: row, column: column)
-          .where((value) => (value == occupied))
-          .length >=
+    if (!_positionIsValid(newPosition)) {
+      return null;
+    }
+
+    var newValue = valueAt(newPosition);
+
+    if (newValue == floor) {
+      return _visibleSeat(position: newPosition, direction: direction);
+    }
+
+    return newValue;
+  }
+
+  List<String> _visibleSeats(Vector position) => directions
+      .map((direction) => _visibleSeat(
+            position: position,
+            direction: direction,
+          ))
+      .where((seat) => seat != null)
+      .toList();
+
+  List<String> _adjacentValues(Vector position) => directions
+      .map((direction) => position + direction)
+      .where(_positionIsValid)
+      .map(valueAt)
+      .toList();
+
+  bool _positionIsValid(Vector position) =>
+      position.row >= 0 &&
+      position.row < _numberOfRows &&
+      position.column >= 0 &&
+      position.column < _numberOfColumns;
+
+  bool _atLeastFourAdjacentOccupied(Vector position) =>
+      _adjacentValues(position).where((value) => (value == occupied)).length >=
       4;
 
-  bool _adjacentAreAllEmpty({int row, int column}) =>
-      _adjacentValues(row: row, column: column)
-          .where((value) => (value == occupied))
-          .isEmpty;
+  bool _adjacentAreAllEmpty(Vector position) =>
+      _adjacentValues(position).where((value) => (value == occupied)).isEmpty;
 
-  String _newValueAt({int row, int column}) {
-    var value = _matrix[row][column];
+  bool _atLeastFiveVisibleOccupied(Vector position) =>
+      _visibleSeats(position).where((value) => (value == occupied)).length >= 5;
+
+  bool _visibleAreAllEmpty(Vector position) =>
+      _visibleSeats(position).where((value) => (value == occupied)).isEmpty;
+
+  String _newValueAt(Vector position, int part) {
+    var value = valueAt(position);
     switch (value) {
       case occupied:
-        if (_atLeastFourAdjacentOccupied(row: row, column: column)) {
+        if ((part == 1 && _atLeastFourAdjacentOccupied(position)) ||
+            (part == 2 && _atLeastFiveVisibleOccupied(position))) {
           value = empty;
         }
         break;
       case empty:
-        if (_adjacentAreAllEmpty(row: row, column: column)) {
+        if ((part == 1 && _adjacentAreAllEmpty(position)) ||
+            (part == 2 && _visibleAreAllEmpty(position))) {
           value = occupied;
         }
-        break;
-      case floor:
-        value = floor;
         break;
     }
     return value;
   }
 
-  Matrix nextMatrix() {
+  Matrix nextMatrix({int part}) {
     List<List<String>> next = [
       for (var row = 0; row < _numberOfRows; row++)
         [
           for (var column = 0; column < _numberOfColumns; column++)
-            _newValueAt(row: row, column: column),
+            _newValueAt(Vector(row: row, column: column), part),
         ],
     ];
     return Matrix(next);
@@ -721,7 +759,8 @@ class Matrix {
       ? [
           for (var row = 0; row < _numberOfRows; row++)
             for (var column = 0; column < _numberOfColumns; column++)
-              _matrix[row][column] == other.valueAt(row: row, column: column),
+              _matrix[row][column] ==
+                  other.valueAt(Vector(row: row, column: column)),
         ].reduce((x, y) => x && y)
       : false;
 
@@ -733,7 +772,7 @@ int day11_part1(String data) {
       Matrix(data.trim().split('\n').map((row) => row.split('')).toList());
 
   while (true) {
-    var newMatrix = matrix.nextMatrix();
+    var newMatrix = matrix.nextMatrix(part: 1);
     if (newMatrix == matrix) break;
     matrix = newMatrix;
   }
@@ -741,7 +780,18 @@ int day11_part1(String data) {
   return matrix.numberOccupied();
 }
 
-int day11_part2(String data) => null;
+int day11_part2(String data) {
+  var matrix =
+      Matrix(data.trim().split('\n').map((row) => row.split('')).toList());
+
+  while (true) {
+    var newMatrix = matrix.nextMatrix(part: 2);
+    if (newMatrix == matrix) break;
+    matrix = newMatrix;
+  }
+
+  return matrix.numberOccupied();
+}
 
 // day 12
 
