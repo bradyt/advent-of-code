@@ -219,7 +219,7 @@ F11''',
     partOneExampleSolution: 17 + 8,
     partOneSolution: 1565,
     partTwoExampleSolution: 214 + 72,
-    partTwoSolution: null,
+    partTwoSolution: 78883,
   ),
   13: ExamplesAndSolution(
     example: '''

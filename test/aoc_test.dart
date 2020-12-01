@@ -71,7 +71,7 @@ void runTestGroup({int day}) {
 }
 
 void runTest(int day, {int part, bool example = false}) {
-  test(('Test part $part${example ? '' : ' example'}'), () {
+  test(('Test part $part${example ? ' example' : ''}'), () {
     testDayPartExample(day: day, part: part, example: example);
   });
 }

@@ -7,8 +7,8 @@ class Instruction {
   final int value;
 }
 
-class Vector {
-  Vector({this.x, this.y});
+class _Vector {
+  _Vector({this.x, this.y});
 
   final int x;
   final int y;
@@ -18,13 +18,13 @@ class Vector {
 class Ship {
   Ship({this.position, this.facing});
 
-  final Vector position;
-  final Vector facing;
+  final _Vector position;
+  final _Vector facing;
 
   String toString() => '  position: $position\n  facing: $facing';
 }
 
-Vector rotateVector({Instruction instruction, Vector vector}) {
+_Vector rotateVector({Instruction instruction, _Vector vector}) {
   var action = instruction.action;
   var value = instruction.value;
 
@@ -44,7 +44,7 @@ Vector rotateVector({Instruction instruction, Vector vector}) {
         action: action,
         value: value - 90,
       ),
-      vector: Vector(
+      vector: _Vector(
         x: -vector.y,
         y: vector.x,
       ),
@@ -55,15 +55,15 @@ Vector rotateVector({Instruction instruction, Vector vector}) {
   return vector;
 }
 
-Ship nextShip({Instruction instruction, Ship ship}) {
+Ship nextShip({Instruction instruction, Ship ship, int part}) {
   String action = instruction.action;
   int value = instruction.value;
 
-  Vector position = ship.position;
-  Vector facing = ship.facing;
+  _Vector position = ship.position;
+  _Vector facing = ship.facing;
 
   if (action == 'F') {
-    position = Vector(
+    position = _Vector(
       x: ship.position.x + value * ship.facing.x,
       y: ship.position.y + value * ship.facing.y,
     );
@@ -76,23 +76,30 @@ Ship nextShip({Instruction instruction, Ship ship}) {
     var delta;
     switch (action) {
       case 'N':
-        delta = Vector(x: 0, y: 1);
+        delta = _Vector(x: 0, y: 1);
         break;
       case 'S':
-        delta = Vector(x: 0, y: -1);
+        delta = _Vector(x: 0, y: -1);
         break;
       case 'E':
-        delta = Vector(x: 1, y: 0);
+        delta = _Vector(x: 1, y: 0);
         break;
       case 'W':
-        delta = Vector(x: -1, y: 0);
+        delta = _Vector(x: -1, y: 0);
         break;
     }
 
-    position = Vector(
-      x: ship.position.x + value * delta.x,
-      y: ship.position.y + value * delta.y,
-    );
+    if (part == 1) {
+      position = _Vector(
+        x: ship.position.x + value * delta.x,
+        y: ship.position.y + value * delta.y,
+      );
+    } else {
+      facing = _Vector(
+        x: ship.facing.x + value * delta.x,
+        y: ship.facing.y + value * delta.y,
+      );
+    }
   } else {
     throw Error;
   }
@@ -108,15 +115,32 @@ int day12_part1(String data) {
       Instruction(action: line[0], value: int.parse(line.substring(1))));
 
   var ship = Ship(
-    position: Vector(x: 0, y: 0),
-    facing: Vector(x: 1, y: 0),
+    position: _Vector(x: 0, y: 0),
+    facing: _Vector(x: 1, y: 0),
   );
 
   instructions.forEach((instruction) {
-    ship = nextShip(ship: ship, instruction: instruction);
+    ship = nextShip(ship: ship, instruction: instruction, part: 1);
   });
 
   return ship.position.x.abs() + ship.position.y.abs();
 }
 
-int day12_part2(String data) => null;
+int day12_part2(String data) {
+  var instructions = data.trim().split('\n').map((line) =>
+      Instruction(action: line[0], value: int.parse(line.substring(1))));
+
+  var ship = Ship(
+    position: _Vector(x: 0, y: 0),
+    facing: _Vector(x: 10, y: 1),
+  );
+
+  instructions.forEach((instruction) {
+    ship = nextShip(ship: ship, instruction: instruction, part: 2);
+  });
+
+  return ship.position.x.abs() + ship.position.y.abs();
+  // print(data);
+  // // print(Vector);
+  // print(Vector.fromList([0, 1]));
+}
