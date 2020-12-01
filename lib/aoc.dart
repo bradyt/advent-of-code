@@ -617,11 +617,7 @@ int day10_part2(String data) {
   var adapters = data.trim().split('\n').map((line) => int.parse(line)).toList()
     ..sort();
 
-  var cache = {
-    -2: 0,
-    -1: 0,
-    0: 1,
-  };
+  var cache = {0: 1};
 
   for (var joltage in adapters) {
     cache[joltage] = (cache[joltage - 1] ?? 0) +
