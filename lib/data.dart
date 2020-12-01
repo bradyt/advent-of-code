@@ -175,10 +175,20 @@ acc +6''',
   ),
   10: ExamplesAndSolution(
     example: '''
-''',
-    partOneExampleSolution: null,
-    partOneSolution: null,
-    partTwoExampleSolution: null,
+16
+10
+15
+5
+1
+11
+7
+19
+6
+12
+4''',
+    partOneExampleSolution: 7 * 5,
+    partOneSolution: 2112,
+    partTwoExampleSolution: 8,
     partTwoSolution: null,
   ),
   11: ExamplesAndSolution(

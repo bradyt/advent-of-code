@@ -15,9 +15,15 @@ void main() {
   var expectedExampleSolution =
       examplesAndSolutions[day].solution(example: true, part: part);
 
-  if (calculatedExampleSolution == expectedExampleSolution) {
+  var completedExample = calculatedExampleSolution == expectedExampleSolution;
+
+  if (completedExample) {
     data = File('input/day-${'$day'.padLeft(2, '0')}.txt').readAsStringSync();
   }
+
+  print('day: $day, part: $part, example: ${!completedExample}');
+
+  if (data.trim().isEmpty) throw Exception('input file empty');
 
   print(solution(day: day, part: part, data: data));
 }

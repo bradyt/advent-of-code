@@ -587,7 +587,31 @@ int day09_part2(String data) {
 int day10(int part, String data) =>
     (part == 1) ? day10_part1(data) : day10_part2(data);
 
-int day10_part1(String data) => null;
+class Pair {
+  Pair(this.first, this.second);
+
+  final int first;
+  final int second;
+}
+
+int day10_part1(String data) {
+  var adapters = data.trim().split('\n').map((line) => int.parse(line)).toList()
+    ..sort();
+
+  var length = adapters.length;
+  var joltageMax = adapters.reduce(max) + 3;
+
+  var differences = [
+    for (var i = 0; i < length + 1; i++)
+      Pair(
+        (i == 0) ? 0 : adapters[i - 1],
+        (i == length) ? joltageMax : adapters[i],
+      )
+  ].map((pair) => pair.second - pair.first);
+
+  return differences.where((x) => x == 1).length *
+      differences.where((x) => x == 3).length;
+}
 
 int day10_part2(String data) => null;
 
