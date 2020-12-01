@@ -11,19 +11,20 @@ void main() {
 
   data = examplesAndSolutions[day].example;
 
-  var calculatedExampleSolution = solution(day: day, part: part, data: data);
+  var calculatedSolution = solution(day: day, part: part, data: data);
   var expectedExampleSolution =
       examplesAndSolutions[day].solution(example: true, part: part);
 
-  var completedExample = calculatedExampleSolution == expectedExampleSolution;
+  var completedExample = calculatedSolution == expectedExampleSolution;
 
   if (completedExample) {
     data = File('input/day-${'$day'.padLeft(2, '0')}.txt').readAsStringSync();
+    calculatedSolution = solution(day: day, part: part, data: data);
   }
 
   print('day: $day, part: $part, example: ${!completedExample}');
 
   if (data.trim().isEmpty) throw Exception('input file empty');
 
-  print(solution(day: day, part: part, data: data));
+  print(calculatedSolution);
 }
