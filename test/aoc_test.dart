@@ -39,9 +39,26 @@ void main() {
     runTest(5, part: 1);
     runTest(5, part: 2);
   });
-  runTestGroup(day: 6);
-  runTestGroup(day: 7);
-  runTestGroup(day: 8);
+  runTestGroup(day: 06);
+  runTestGroup(day: 07);
+  runTestGroup(day: 08);
+  runTestGroup(day: 09);
+  runTestGroup(day: 10);
+  runTestGroup(day: 11);
+  runTestGroup(day: 12);
+  runTestGroup(day: 13);
+  runTestGroup(day: 14);
+  runTestGroup(day: 15);
+  runTestGroup(day: 16);
+  runTestGroup(day: 17);
+  runTestGroup(day: 18);
+  runTestGroup(day: 19);
+  runTestGroup(day: 20);
+  runTestGroup(day: 21);
+  runTestGroup(day: 22);
+  runTestGroup(day: 23);
+  runTestGroup(day: 24);
+  runTestGroup(day: 25);
 }
 
 void runTestGroup({int day}) {
@@ -65,7 +82,7 @@ void testDayPartExample({int day, int part, bool example = false}) {
       part: part,
       data: example
           ? examplesAndSolutions[day].example
-          : File('input/day-0$day.txt').readAsStringSync());
+          : File('input/day-${'$day'.padLeft(2, '0')}.txt').readAsStringSync());
 
   var expectedSolution =
       examplesAndSolutions[day].solution(example: example, part: part);
