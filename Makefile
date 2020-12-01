@@ -3,7 +3,7 @@
 test:
 	find . -name '*.dart' | entr -cs 'dart pub run test'
 
-watch:
+aoc:
 	find . -name '*.dart' | entr -c aoc
 
 analyze:

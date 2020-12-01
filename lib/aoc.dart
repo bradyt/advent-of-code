@@ -348,7 +348,60 @@ int day06_part2(String contents) => contents
 int day07(int part, String data) =>
     (part == 1) ? day07_part1(data) : day07_part2(data);
 
-int day07_part1(String data) => null;
+Map day07_parser(data) {
+  var map = {};
+
+  data.trim().split('\n').forEach((line) {
+    var match = RegExp(r'^(\w+ \w+) bags contain (.+)\.$').firstMatch(line);
+    var bag = match.group(1);
+    var requiredContents = match.group(2).split(', ');
+    map[bag] = {};
+    if (requiredContents[0] != 'no other bags') {
+      var bagExp = RegExp(r'(\d+) (.+) bags?');
+      var bagMatch;
+      requiredContents.forEach((bags) {
+        bagMatch = bagExp.firstMatch(bags);
+        map[bag][bagMatch.group(2)] = bagMatch.group(1);
+      });
+    }
+  });
+
+  return map;
+}
+
+Map day07_partOneGraphFlip(Map graph) {
+  var result = {};
+
+  for (var key in graph.keys) {
+    result[key] = <String>{};
+  }
+
+  for (var entry in graph.entries) {
+    for (var key in entry.value.keys) {
+      result[key].add(entry.key);
+    }
+  }
+
+  return result;
+}
+
+int day07_part1(String data) {
+  var parsedData = day07_parser(data);
+  var invertedTree = day07_partOneGraphFlip(parsedData);
+
+  var visitedBags = <String>{};
+  var currentDepth = {'shiny gold'};
+
+  while (currentDepth.isNotEmpty) {
+    currentDepth = currentDepth
+        .map((bag) => invertedTree[bag])
+        .reduce((x, y) => x.union(y))
+          ..removeAll(visitedBags);
+    visitedBags.addAll(currentDepth);
+  }
+
+  return visitedBags.length;
+}
 
 int day07_part2(String data) => null;
 

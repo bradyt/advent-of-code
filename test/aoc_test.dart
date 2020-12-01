@@ -40,6 +40,7 @@ void main() {
     runTest(5, part: 2);
   });
   runTestGroup(day: 6);
+  runTestGroup(day: 7);
 }
 
 void runTestGroup({int day}) {
@@ -72,5 +73,5 @@ void testDayPartExample({int day, int part, bool example = false}) {
   // print('day: $day, part: $part, example: $example');
   // print('calculated: $calculatedSolution');
   // print('expected: $expectedSolution');
-  assert(calculatedSolution == expectedSolution);
+  expect(calculatedSolution, expectedSolution);
 }
