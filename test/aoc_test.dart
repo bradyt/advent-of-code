@@ -63,7 +63,7 @@ void testDayPartExample({int day, int part, bool example = false}) {
       part: part,
       data: example
           ? examplesAndSolutions[day].example
-          : File('day-0$day.txt').readAsStringSync());
+          : File('input/day-0$day.txt').readAsStringSync());
 
   var expectedSolution =
       examplesAndSolutions[day].solution(example: example, part: part);
