@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:test/test.dart';
 
-import '../examplesAndSolutions.dart';
-import '../lib/aoc.dart';
+import 'package:advent_of_code/aoc.dart';
+import 'package:advent_of_code/data.dart';
 
 void main() {
   runTestGroup(day: 1);
