@@ -15,6 +15,8 @@ int solution({int day, int part, String data}) {
       return (part == 1) ? day04(data) : day04_part2(data);
     case 5:
       return (part == 1) ? day05(data) : day05_part2(data);
+    default:
+      throw Error;
   }
 }
 
@@ -29,6 +31,7 @@ int day01(String contents) {
       }
     }
   }
+  throw Error;
 }
 
 int day01_part2(String data) {
@@ -45,6 +48,7 @@ int day01_part2(String data) {
       }
     }
   }
+  throw Error;
 }
 
 int day02(String contents) {
@@ -254,6 +258,7 @@ int day05_part2(String contents) {
     }
     lastBoardingPass = boardingPass;
   }
+  throw Error;
 }
 
 bool validate(String key, String value) {

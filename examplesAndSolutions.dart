@@ -23,6 +23,7 @@ class ExamplesAndSolution {
     } else if (!example && part == 2) {
       return partTwoSolution;
     }
+    throw Error;
   }
 }
 
