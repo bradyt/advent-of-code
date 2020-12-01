@@ -7,46 +7,60 @@ import '../lib/aoc.dart';
 
 void main() {
   group('test day 1', () {
-    test('test day 1 part 1 example', () {
+    test('part 1 example', () {
       testDayPartExample(day: 1, part: 1);
     });
-    test('test day 1 part 1', () {
+    test('part 1', () {
       testDayPartExample(day: 1, part: 1, example: false);
     });
-    test('test day 1 part 2 example', () {
+    test('part 2 example', () {
       testDayPartExample(day: 1, part: 2);
     });
-    test('test day 1 part 2', () {
+    test('part 2', () {
       testDayPartExample(day: 1, part: 2, example: false);
     });
   });
   group('test day 2', () {
-    test('test day 2 part 1 example', () {
+    test('part 1 example', () {
       testDayPartExample(day: 2, part: 1);
     });
-    test('test day 2 part 1', () {
+    test('part 1', () {
       testDayPartExample(day: 2, part: 1, example: false);
     });
-    test('test day 2 part 2 example', () {
+    test('part 2 example', () {
       testDayPartExample(day: 2, part: 2);
     });
-    test('test day 2 part 2', () {
+    test('part 2', () {
       testDayPartExample(day: 2, part: 2, example: false);
     });
   });
   group('test day 3', () {
-    test('test day 3 part 1 example', () {
+    test('part 1 example', () {
       testDayPartExample(day: 3, part: 1);
     });
-    test('test day 3 part 1', () {
+    test('part 1', () {
       testDayPartExample(day: 3, part: 1, example: false);
     });
-    test('test day 3 part 2 example', () {
+    test('part 2 example', () {
       testDayPartExample(day: 3, part: 2);
     });
-    test('test day 3 part 2', () {
+    test('part 2', () {
       testDayPartExample(day: 3, part: 2, example: false);
     });
+  });
+  group('test day 4;', () {
+    test('part 1 example', () {
+      testDayPartExample(day: 4, part: 1);
+    });
+    test('part 1', () {
+      testDayPartExample(day: 4, part: 1, example: false);
+    }, skip: true);
+    test('part 2 example', () {
+      testDayPartExample(day: 4, part: 2);
+    }, skip: true);
+    test('part 2', () {
+      testDayPartExample(day: 4, part: 2, example: false);
+    }, skip: true);
   });
 }
 

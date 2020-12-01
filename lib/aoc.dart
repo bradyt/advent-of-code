@@ -10,6 +10,8 @@ int solution({int day, int part, String data}) {
       return (part == 1) ? day02(data) : day02_part2(data);
     case 3:
       return (part == 1) ? day03(data) : day03_part2(data);
+    case 4:
+      return (part == 1) ? day04(data) : day04_part2(data);
   }
 }
 
@@ -149,3 +151,7 @@ int day03_part2(String contents) {
       .reduce((x, y) => x * y);
   return result;
 }
+
+int day04(String contents) => 0;
+
+int day04_part2(String contents) => 0;
