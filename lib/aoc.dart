@@ -20,6 +20,8 @@ int solution({int day, int part, String data}) {
   }
 }
 
+// day 1
+
 int day01(String contents) {
   var entries = contents.trim().split('\n').map((str) => int.parse(str));
   for (var i = 0; i < entries.length; i++) {
@@ -50,6 +52,8 @@ int day01_part2(String data) {
   }
   throw Error;
 }
+
+// day 2
 
 int day02(String contents) {
   var lines = contents.trim().split('\n');
@@ -99,6 +103,8 @@ int day02_part2(String contents) {
   }
   return validPasswordCount;
 }
+
+// day 3
 
 class Grid {
   Grid(String data)
@@ -158,6 +164,8 @@ int day03_part2(String contents) {
       .reduce((x, y) => x * y);
   return result;
 }
+
+// day 4
 
 int day04(String contents) => contents
     .replaceAll(' ', '\n')
@@ -238,27 +246,6 @@ bool validatePassport(Map passport) {
           ));
 }
 
-int day05_convert(String boardingPass) => boardingPass
-    .split('')
-    .map((letter) => {'B': 1, 'F': 0, 'R': 1, 'L': 0}[letter])
-    .fold(0, (prev, element) => 2 * prev + element);
-
-int day05(String contents) =>
-    contents.trim().split('\n').map(day05_convert).reduce((x, y) => max(x, y));
-
-int day05_part2(String contents) {
-  var sortedBoardingPasses =
-      contents.trim().split('\n').map(day05_convert).toList()..sort();
-  var lastBoardingPass = sortedBoardingPasses[0] - 3;
-  for (var boardingPass in sortedBoardingPasses) {
-    if (boardingPass == lastBoardingPass + 2) {
-      return boardingPass - 1;
-    }
-    lastBoardingPass = boardingPass;
-  }
-  throw Error;
-}
-
 bool validate(String key, String value) {
   bool valid;
   switch (key) {
@@ -290,4 +277,27 @@ bool validate(String key, String value) {
       valid = false;
   }
   return valid;
+}
+
+// day 5
+
+int day05_convert(String boardingPass) => boardingPass
+    .split('')
+    .map((letter) => {'B': 1, 'F': 0, 'R': 1, 'L': 0}[letter])
+    .fold(0, (prev, element) => 2 * prev + element);
+
+int day05(String contents) =>
+    contents.trim().split('\n').map(day05_convert).reduce((x, y) => max(x, y));
+
+int day05_part2(String contents) {
+  var sortedBoardingPasses =
+      contents.trim().split('\n').map(day05_convert).toList()..sort();
+  var lastBoardingPass = sortedBoardingPasses[0] - 3;
+  for (var boardingPass in sortedBoardingPasses) {
+    if (boardingPass == lastBoardingPass + 2) {
+      return boardingPass - 1;
+    }
+    lastBoardingPass = boardingPass;
+  }
+  throw Error;
 }
