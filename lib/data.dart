@@ -205,8 +205,8 @@ L.LLLLLL.L
 L.LLLLL.LL
 ''',
     partOneExampleSolution: 37,
-    partOneSolution: null,
-    partTwoExampleSolution: null,
+    partOneSolution: 2406,
+    partTwoExampleSolution: 26,
     partTwoSolution: null,
   ),
   12: ExamplesAndSolution(

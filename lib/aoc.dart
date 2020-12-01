@@ -635,7 +635,111 @@ int day10_part2(String data) {
 int day11(int part, String data) =>
     (part == 1) ? day11_part1(data) : day11_part2(data);
 
-int day11_part1(String data) => null;
+const String occupied = '#';
+const String empty = 'L';
+const String floor = '.';
+
+class Matrix {
+  Matrix(List<List<String>> matrix) : _matrix = matrix;
+
+  final List<List<String>> _matrix;
+
+  int get _numberOfRows => _matrix.length;
+  int get _numberOfColumns => _matrix[0].length;
+
+  int numberOccupied() => _matrix
+      .map((row) => row.where((value) => value == occupied).length)
+      .reduce((x, y) => x + y);
+
+  String valueAt({int row, int column}) => _matrix[row][column];
+
+  List<String> _adjacentValues({int row, int column}) => [
+        [-1, -1],
+        [-1, 0],
+        [-1, 1],
+        [0, -1],
+        [0, 1],
+        [1, -1],
+        [1, 0],
+        [1, 1],
+      ]
+          .map((delta) => [row + delta[0], column + delta[1]])
+          .where((position) =>
+              _positionIsValid(row: position[0], column: position[1]))
+          .map((position) => _matrix[position[0]][position[1]])
+          .toList();
+
+  bool _positionIsValid({int row, int column}) =>
+      row >= 0 &&
+      row < _numberOfRows &&
+      column >= 0 &&
+      column < _numberOfColumns;
+
+  bool _atLeastFourAdjacentOccupied({int row, int column}) =>
+      _adjacentValues(row: row, column: column)
+          .where((value) => (value == occupied))
+          .length >=
+      4;
+
+  bool _adjacentAreAllEmpty({int row, int column}) =>
+      _adjacentValues(row: row, column: column)
+          .where((value) => (value == occupied))
+          .isEmpty;
+
+  String _newValueAt({int row, int column}) {
+    var value = _matrix[row][column];
+    switch (value) {
+      case occupied:
+        if (_atLeastFourAdjacentOccupied(row: row, column: column)) {
+          value = empty;
+        }
+        break;
+      case empty:
+        if (_adjacentAreAllEmpty(row: row, column: column)) {
+          value = occupied;
+        }
+        break;
+      case floor:
+        value = floor;
+        break;
+    }
+    return value;
+  }
+
+  Matrix nextMatrix() {
+    List<List<String>> next = [
+      for (var row = 0; row < _numberOfRows; row++)
+        [
+          for (var column = 0; column < _numberOfColumns; column++)
+            _newValueAt(row: row, column: column),
+        ],
+    ];
+    return Matrix(next);
+  }
+
+  bool operator ==(Object other) => (other is Matrix)
+      ? [
+          for (var row = 0; row < _numberOfRows; row++)
+            for (var column = 0; column < _numberOfColumns; column++)
+              _matrix[row][column] == other.valueAt(row: row, column: column),
+        ].reduce((x, y) => x && y)
+      : false;
+
+  String toString() => _matrix.map((row) => row.join('')).join('\n');
+}
+
+int day11_part1(String data) {
+  var matrix =
+      Matrix(data.trim().split('\n').map((row) => row.split('')).toList());
+
+  while (true) {
+    var newMatrix = matrix.nextMatrix();
+    if (newMatrix == matrix) break;
+    matrix = newMatrix;
+  }
+
+  return matrix.numberOccupied();
+}
 
 int day11_part2(String data) => null;
 
