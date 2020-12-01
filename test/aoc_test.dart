@@ -97,13 +97,13 @@ void main() {
     });
     test('part 1', () {
       testDayPartExample(day: 6, part: 1, example: false);
-    }, skip: true);
+    });
     test('part 2 example', () {
       testDayPartExample(day: 6, part: 2);
-    }, skip: true);
+    });
     test('part 2', () {
       testDayPartExample(day: 6, part: 2, example: false);
-    }, skip: true);
+    });
   });
 }
 

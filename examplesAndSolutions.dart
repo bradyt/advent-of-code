@@ -110,8 +110,8 @@ a
 
 b''',
     partOneExampleSolution: 11,
-    partOneSolution: null,
-    partTwoExampleSolution: null,
-    partTwoSolution: null,
+    partOneSolution: 6683,
+    partTwoExampleSolution: 6,
+    partTwoSolution: 3122,
   ),
 };
