@@ -148,11 +148,30 @@ acc +6''',
   ),
   09: ExamplesAndSolution(
     example: '''
-''',
-    partOneExampleSolution: null,
-    partOneSolution: null,
-    partTwoExampleSolution: null,
-    partTwoSolution: null,
+35
+20
+15
+25
+47
+40
+62
+55
+65
+95
+102
+117
+150
+182
+127
+219
+299
+277
+309
+576''',
+    partOneExampleSolution: 127,
+    partOneSolution: 90433990,
+    partTwoExampleSolution: 62,
+    partTwoSolution: 11691646,
   ),
   10: ExamplesAndSolution(
     example: '''
