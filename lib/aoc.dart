@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
-String getFileContents(String file) => File(file).readAsStringSync();
+import 'package:trotter/trotter.dart';
 
 int solution({int day, int part, String data}) {
   switch (day) {
@@ -22,32 +22,28 @@ int solution({int day, int part, String data}) {
 
 // day 1
 
+Set day01Entries(String contents) =>
+    contents.trim().split('\n').map((str) => int.parse(str)).toSet();
+
 int day01(String contents) {
-  var entries = contents.trim().split('\n').map((str) => int.parse(str));
-  for (var i = 0; i < entries.length; i++) {
-    var entry_i = entries.elementAt(i);
-    for (var j = i + 1; j < entries.length; j++) {
-      var entry_j = entries.elementAt(j);
-      if (entry_i + entry_j == 2020) {
-        return entry_i * entry_j;
-      }
+  var entries = day01Entries(contents);
+  for (var x in entries) {
+    var y = 2020 - x;
+    if (entries.contains(y)) {
+      return x * y;
     }
   }
   throw Error;
 }
 
 int day01_part2(String data) {
-  var entries = data.trim().split('\n').map((str) => int.parse(str));
-  for (var i = 0; i < entries.length; i++) {
-    var entry_i = entries.elementAt(i);
-    for (var j = i + 1; j < entries.length; j++) {
-      var entry_j = entries.elementAt(j);
-      for (var k = i + 1; k < entries.length; k++) {
-        var entry_k = entries.elementAt(k);
-        if (entry_i + entry_j + entry_k == 2020) {
-          return entry_i * entry_j * entry_k;
-        }
-      }
+  var entries = day01Entries(data);
+  for (var pair in Combinations(2, entries.toList())()) {
+    var x = pair[0];
+    var y = pair[1];
+    var z = 2020 - x - y;
+    if (entries.contains(z)) {
+      return x * y * z;
     }
   }
   throw Error;

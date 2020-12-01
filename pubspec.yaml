@@ -3,5 +3,8 @@ name: advent_of_code
 executables:
   aoc: main
 
+dependencies:
+  trotter:
+
 dev_dependencies:
   test:
