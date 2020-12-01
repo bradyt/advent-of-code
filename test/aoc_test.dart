@@ -40,13 +40,13 @@ void main() {
     });
     test('test day 3 part 1', () {
       testDayPartExample(day: 3, part: 1, example: false);
-    }, skip: true);
+    });
     test('test day 3 part 2 example', () {
       testDayPartExample(day: 3, part: 2);
-    }, skip: true);
+    });
     test('test day 3 part 2', () {
       testDayPartExample(day: 3, part: 2, example: false);
-    }, skip: true);
+    });
   });
 }
 

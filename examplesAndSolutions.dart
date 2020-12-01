@@ -64,8 +64,8 @@ var examplesAndSolutions = {
 #...##....#
 .#..#...#.#''',
     partOneExampleSolution: 7,
-    partOneSolution: null,
-    partTwoExampleSolution: null,
-    partTwoSolution: null,
+    partOneSolution: 259,
+    partTwoExampleSolution: 336,
+    partTwoSolution: 2224913600,
   ),
 };
