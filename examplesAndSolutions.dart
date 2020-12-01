@@ -50,4 +50,22 @@ var examplesAndSolutions = {
     partTwoExampleSolution: 1,
     partTwoSolution: 275,
   ),
+  3: ExamplesAndSolution(
+    example: '''
+..##.......
+#...#...#..
+.#....#..#.
+..#.#...#.#
+.#...##..#.
+..#.##.....
+.#.#.#....#
+.#........#
+#.##...#...
+#...##....#
+.#..#...#.#''',
+    partOneExampleSolution: 7,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
 };
