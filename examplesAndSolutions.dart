@@ -92,4 +92,26 @@ iyr:2011 ecl:brn hgt:59in''',
     partOneSolution: 935,
     partTwoSolution: 743,
   ),
+  6: ExamplesAndSolution(
+    example: '''
+abc
+
+a
+b
+c
+
+ab
+ac
+
+a
+a
+a
+a
+
+b''',
+    partOneExampleSolution: 11,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
 };

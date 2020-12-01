@@ -91,6 +91,20 @@ void main() {
       testDayPartExample(day: 5, part: 2, example: false);
     });
   });
+  group('test day 6', () {
+    test('part 1 example', () {
+      testDayPartExample(day: 6, part: 1);
+    });
+    test('part 1', () {
+      testDayPartExample(day: 6, part: 1, example: false);
+    }, skip: true);
+    test('part 2 example', () {
+      testDayPartExample(day: 6, part: 2);
+    }, skip: true);
+    test('part 2', () {
+      testDayPartExample(day: 6, part: 2, example: false);
+    }, skip: true);
+  });
 }
 
 void testDayPartExample({int day, int part, bool example = true}) {

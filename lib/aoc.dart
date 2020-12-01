@@ -15,6 +15,8 @@ int solution({int day, int part, String data}) {
       return (part == 1) ? day04(data) : day04_part2(data);
     case 5:
       return (part == 1) ? day05(data) : day05_part2(data);
+    case 6:
+      return (part == 1) ? day06(data) : day06_part2(data);
     default:
       throw Error;
   }
@@ -296,4 +298,14 @@ int day05_part2(String contents) {
     lastBoardingPass = boardingPass;
   }
   throw Error;
+}
+
+// day 6
+
+int day06(String contents) {
+  return null;
+}
+
+int day06_part2(String contents) {
+  return null;
 }
