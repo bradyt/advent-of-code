@@ -434,17 +434,17 @@ int day07_part2(String data) {
 int day08(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-class Instruction {
-  Instruction({this.operation, this.argument});
+class Day08Instruction {
+  Day08Instruction({this.operation, this.argument});
 
   final String operation;
   final int argument;
 }
 
-List<Instruction> day08_parser(String data) => data
+List<Day08Instruction> day08_parser(String data) => data
     .trim()
     .split('\n')
-    .map((line) => Instruction(
+    .map((line) => Day08Instruction(
           operation: line.split(' ')[0],
           argument: int.parse(line.split(' ')[1]),
         ))
@@ -456,7 +456,7 @@ class Delta {
   final position;
   final accumulator;
 
-  factory Delta.fromInstruction(Instruction instruction) {
+  factory Delta.fromInstruction(Day08Instruction instruction) {
     var delta_position = 1;
     var delta_accumulator = 0;
 
@@ -510,7 +510,7 @@ int day08_part2(String data) {
   var instructions = day08_parser(data);
 
   List flipAtElement(int index, List instructions) {
-    var flippedInstruction = Instruction(
+    var flippedInstruction = Day08Instruction(
       operation: {
         'jmp': 'nop',
         'nop': 'jmp',
@@ -639,15 +639,15 @@ const String occupied = '#';
 const String empty = 'L';
 const String floor = '.';
 
-class Vector {
-  Vector({this.row, this.column});
+class Day11Vector {
+  Day11Vector({this.row, this.column});
 
   final int row;
   final int column;
 
-  Vector operator +(Object other) => Vector(
-        row: row + (other as Vector).row,
-        column: column + (other as Vector).column,
+  Day11Vector operator +(Object other) => Day11Vector(
+        row: row + (other as Day11Vector).row,
+        column: column + (other as Day11Vector).column,
       );
 }
 
@@ -663,20 +663,21 @@ class Matrix {
       .map((row) => row.where((value) => value == occupied).length)
       .reduce((x, y) => x + y);
 
-  String valueAt(Vector position) => _matrix[position.row][position.column];
+  String valueAt(Day11Vector position) =>
+      _matrix[position.row][position.column];
 
   var directions = [
-    Vector(row: -1, column: -1),
-    Vector(row: -1, column: 0),
-    Vector(row: -1, column: 1),
-    Vector(row: 0, column: -1),
-    Vector(row: 0, column: 1),
-    Vector(row: 1, column: -1),
-    Vector(row: 1, column: 0),
-    Vector(row: 1, column: 1),
+    Day11Vector(row: -1, column: -1),
+    Day11Vector(row: -1, column: 0),
+    Day11Vector(row: -1, column: 1),
+    Day11Vector(row: 0, column: -1),
+    Day11Vector(row: 0, column: 1),
+    Day11Vector(row: 1, column: -1),
+    Day11Vector(row: 1, column: 0),
+    Day11Vector(row: 1, column: 1),
   ];
 
-  String _visibleSeat({Vector position, Vector direction}) {
+  String _visibleSeat({Day11Vector position, Day11Vector direction}) {
     var newPosition = position + direction;
 
     if (!_positionIsValid(newPosition)) {
@@ -692,7 +693,7 @@ class Matrix {
     return newValue;
   }
 
-  List<String> _visibleSeats(Vector position) => directions
+  List<String> _visibleSeats(Day11Vector position) => directions
       .map((direction) => _visibleSeat(
             position: position,
             direction: direction,
@@ -700,32 +701,32 @@ class Matrix {
       .where((seat) => seat != null)
       .toList();
 
-  List<String> _adjacentValues(Vector position) => directions
+  List<String> _adjacentValues(Day11Vector position) => directions
       .map((direction) => position + direction)
       .where(_positionIsValid)
       .map(valueAt)
       .toList();
 
-  bool _positionIsValid(Vector position) =>
+  bool _positionIsValid(Day11Vector position) =>
       position.row >= 0 &&
       position.row < _numberOfRows &&
       position.column >= 0 &&
       position.column < _numberOfColumns;
 
-  bool _atLeastFourAdjacentOccupied(Vector position) =>
+  bool _atLeastFourAdjacentOccupied(Day11Vector position) =>
       _adjacentValues(position).where((value) => (value == occupied)).length >=
       4;
 
-  bool _adjacentAreAllEmpty(Vector position) =>
+  bool _adjacentAreAllEmpty(Day11Vector position) =>
       _adjacentValues(position).where((value) => (value == occupied)).isEmpty;
 
-  bool _atLeastFiveVisibleOccupied(Vector position) =>
+  bool _atLeastFiveVisibleOccupied(Day11Vector position) =>
       _visibleSeats(position).where((value) => (value == occupied)).length >= 5;
 
-  bool _visibleAreAllEmpty(Vector position) =>
+  bool _visibleAreAllEmpty(Day11Vector position) =>
       _visibleSeats(position).where((value) => (value == occupied)).isEmpty;
 
-  String _newValueAt(Vector position, int part) {
+  String _newValueAt(Day11Vector position, int part) {
     var value = valueAt(position);
     switch (value) {
       case occupied:
@@ -749,7 +750,7 @@ class Matrix {
       for (var row = 0; row < _numberOfRows; row++)
         [
           for (var column = 0; column < _numberOfColumns; column++)
-            _newValueAt(Vector(row: row, column: column), part),
+            _newValueAt(Day11Vector(row: row, column: column), part),
         ],
     ];
     return Matrix(next);
@@ -760,7 +761,7 @@ class Matrix {
           for (var row = 0; row < _numberOfRows; row++)
             for (var column = 0; column < _numberOfColumns; column++)
               _matrix[row][column] ==
-                  other.valueAt(Vector(row: row, column: column)),
+                  other.valueAt(Day11Vector(row: row, column: column)),
         ].reduce((x, y) => x && y)
       : false;
 
@@ -795,10 +796,124 @@ int day11_part2(String data) {
 
 // day 12
 
+class Instruction {
+  Instruction({this.action, this.value});
+
+  final String action;
+  final int value;
+}
+
+class Vector {
+  Vector({this.x, this.y});
+
+  final int x;
+  final int y;
+  String toString() => '($x, $y)';
+}
+
+class Ship {
+  Ship({this.position, this.facing});
+
+  final Vector position;
+  final Vector facing;
+
+  String toString() => '  position: $position\n  facing: $facing';
+}
+
+Vector rotateVector({Instruction instruction, Vector vector}) {
+  var action = instruction.action;
+  var value = instruction.value;
+
+  if (value == 0) {
+    return vector;
+  } else if (action == 'R') {
+    return rotateVector(
+      instruction: Instruction(
+        action: 'L',
+        value: 360 - value,
+      ),
+      vector: vector,
+    );
+  } else if (action == 'L') {
+    return rotateVector(
+      instruction: Instruction(
+        action: action,
+        value: value - 90,
+      ),
+      vector: Vector(
+        x: -vector.y,
+        y: vector.x,
+      ),
+    );
+  } else {
+    throw Error;
+  }
+  return vector;
+}
+
+Ship nextShip({Instruction instruction, Ship ship}) {
+  String action = instruction.action;
+  int value = instruction.value;
+
+  Vector position = ship.position;
+  Vector facing = ship.facing;
+
+  if (action == 'F') {
+    position = Vector(
+      x: ship.position.x + value * ship.facing.x,
+      y: ship.position.y + value * ship.facing.y,
+    );
+  } else if ('LR'.split('').contains(action)) {
+    facing = rotateVector(
+      instruction: instruction,
+      vector: ship.facing,
+    );
+  } else if ('NSEW'.split('').contains(action)) {
+    var delta;
+    switch (action) {
+      case 'N':
+        delta = Vector(x: 0, y: 1);
+        break;
+      case 'S':
+        delta = Vector(x: 0, y: -1);
+        break;
+      case 'E':
+        delta = Vector(x: 1, y: 0);
+        break;
+      case 'W':
+        delta = Vector(x: -1, y: 0);
+        break;
+    }
+
+    position = Vector(
+      x: ship.position.x + value * delta.x,
+      y: ship.position.y + value * delta.y,
+    );
+  } else {
+    throw Error;
+  }
+
+  return Ship(position: position, facing: facing);
+}
+
 int day12(int part, String data) =>
     (part == 1) ? day12_part1(data) : day12_part2(data);
 
-int day12_part1(String data) => null;
+int day12_part1(String data) {
+  var instructions = data.trim().split('\n').map((line) =>
+      Instruction(action: line[0], value: int.parse(line.substring(1))));
+
+  var ship = Ship(
+    position: Vector(x: 0, y: 0),
+    facing: Vector(x: 1, y: 0),
+  );
+
+  instructions.forEach((instruction) {
+    ship = nextShip(ship: ship, instruction: instruction);
+  });
+
+  return ship.position.x.abs() + ship.position.y.abs();
+}
 
 int day12_part2(String data) => null;
 

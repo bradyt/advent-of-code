@@ -207,14 +207,18 @@ L.LLLLL.LL
     partOneExampleSolution: 37,
     partOneSolution: 2406,
     partTwoExampleSolution: 26,
-    partTwoSolution: null,
+    partTwoSolution: 2149,
   ),
   12: ExamplesAndSolution(
     example: '''
-''',
-    partOneExampleSolution: null,
-    partOneSolution: null,
-    partTwoExampleSolution: null,
+F10
+N3
+F7
+R90
+F11''',
+    partOneExampleSolution: 17 + 8,
+    partOneSolution: 1565,
+    partTwoExampleSolution: 214 + 72,
     partTwoSolution: null,
   ),
   13: ExamplesAndSolution(
