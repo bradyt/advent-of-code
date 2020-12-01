@@ -85,8 +85,7 @@ hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in''',
     partOneExampleSolution: 2,
     partOneSolution: 170,
-    partTwoExampleSolution: null,
-    partTwoSolution: null,
+    partTwoSolution: 103,
   ),
   5: ExamplesAndSolution(
     partOneSolution: 935,

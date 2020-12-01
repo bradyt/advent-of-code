@@ -58,9 +58,24 @@ void main() {
     test('part 2 example', () {
       testDayPartExample(day: 4, part: 2);
     }, skip: true);
+    test('part 2 examples', () {
+      expect(validate('byr', '2002'), true);
+      expect(validate('byr', '2003'), false);
+      expect(validate('hgt', '60in'), true);
+      expect(validate('hgt', '190cm'), true);
+      expect(validate('hgt', '190in'), false);
+      expect(validate('hgt', '190'), false);
+      expect(validate('hcl', '#123abc'), true);
+      expect(validate('hcl', '#123abz'), false);
+      expect(validate('hcl', '123abc'), false);
+      expect(validate('ecl', 'brn'), true);
+      expect(validate('ecl', 'wat'), false);
+      expect(validate('pid', '000000001'), true);
+      expect(validate('pid', '0123456789'), false);
+    });
     test('part 2', () {
       testDayPartExample(day: 4, part: 2, example: false);
-    }, skip: true);
+    });
   });
   group('test day 5;', () {
     test('part 1 examples', () {
@@ -74,7 +89,7 @@ void main() {
     });
     test('part 2', () {
       testDayPartExample(day: 5, part: 2, example: false);
-    });
+    }, skip: true);
   });
 }
 

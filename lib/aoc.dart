@@ -201,18 +201,10 @@ bool validateYear(String str, int lowerBound, int upperBound) {
   return valid;
 }
 
-bool validatePassport(Map passport) {
-  var validByr = validateYear(passport['byr'], 1920, 2002);
-  var validIyr = validateYear(passport['iyr'], 2010, 2020);
-  var validEyr = validateYear(passport['eyr'], 2020, 2030);
-
-  var validHcl = RegExp(r'#[0-9a-f]{6}').hasMatch(passport['hcl'] ?? '');
-  var validEcl = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
-      .contains(passport['ecl']);
-  var validPid = RegExp(r'\d{9}').hasMatch(passport['pid'] ?? '');
-
-  var hgtMatch = RegExp(r'([0-9]+)(in|cm)').firstMatch(passport['hgt'] ?? '');
+bool validateHeight(String hgt) {
+  var hgtMatch = RegExp(r'([0-9]+)(in|cm)').firstMatch(hgt ?? '');
   var validHgt;
+
   if (hgtMatch == null) {
     validHgt = false;
   } else {
@@ -232,13 +224,15 @@ bool validatePassport(Map passport) {
     }
   }
 
-  return validByr &&
-      validIyr &&
-      validEyr &&
-      validHgt &&
-      validHcl &&
-      validEcl &&
-      validPid;
+  return validHgt;
+}
+
+bool validatePassport(Map passport) {
+  return ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
+      .every((key) => validate(
+            key,
+            passport[key],
+          ));
 }
 
 int day05_convert(String boardingPass) =>
@@ -261,4 +255,37 @@ int day05_part2(String contents) {
     }
     lastBoardingPass = boardingPass;
   });
+}
+
+bool validate(String key, String value) {
+  bool valid;
+  switch (key) {
+    case 'byr':
+      valid = validateYear(value, 1920, 2002);
+      break;
+    case 'iyr':
+      valid = validateYear(value, 2010, 2020);
+      break;
+    case 'eyr':
+      valid = validateYear(value, 2020, 2030);
+      break;
+    case 'hgt':
+      valid = validateHeight(value);
+      break;
+    case 'hcl':
+      valid = RegExp(r'^#[0-9a-f]{6}$').hasMatch(value ?? '');
+      break;
+    case 'ecl':
+      valid = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].contains(value);
+      break;
+    case 'pid':
+      valid = RegExp(r'^\d{9}$').hasMatch(value ?? '');
+      break;
+    case 'cid':
+      valid = true;
+      break;
+    default:
+      valid = false;
+  }
+  return valid;
 }
