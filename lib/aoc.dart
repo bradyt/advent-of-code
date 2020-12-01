@@ -4,39 +4,42 @@ import 'dart:math';
 import 'package:trotter/trotter.dart';
 
 int solution({int day, int part, String data}) => {
-      01: {1: day01, 2: day01_part2},
-      02: {1: day02, 2: day02_part2},
-      03: {1: day03, 2: day03_part2},
-      04: {1: day04, 2: day04_part2},
-      05: {1: day05, 2: day05_part2},
-      06: {1: day06, 2: day06_part2},
-      07: {1: day07, 2: day07_part2},
-      08: {1: day08, 2: day08_part2},
-      09: {1: day09, 2: day09_part2},
-      10: {1: day10, 2: day10_part2},
-      11: {1: day11, 2: day11_part2},
-      12: {1: day12, 2: day12_part2},
-      13: {1: day13, 2: day13_part2},
-      14: {1: day14, 2: day14_part2},
-      15: {1: day15, 2: day15_part2},
-      16: {1: day16, 2: day16_part2},
-      17: {1: day17, 2: day17_part2},
-      18: {1: day18, 2: day18_part2},
-      19: {1: day19, 2: day19_part2},
-      20: {1: day20, 2: day20_part2},
-      21: {1: day21, 2: day21_part2},
-      22: {1: day22, 2: day22_part2},
-      23: {1: day23, 2: day23_part2},
-      24: {1: day24, 2: day24_part2},
-      25: {1: day25, 2: day25_part2},
-    }[day][part](data);
+      01: day01,
+      02: day02,
+      03: day03,
+      04: day04,
+      05: day05,
+      06: day06,
+      07: day07,
+      08: day08,
+      09: day09,
+      10: day10,
+      11: day11,
+      12: day12,
+      13: day13,
+      14: day14,
+      15: day15,
+      16: day16,
+      17: day17,
+      18: day18,
+      19: day19,
+      20: day20,
+      21: day21,
+      22: day22,
+      23: day23,
+      24: day24,
+      25: day25,
+    }[day](part, data);
 
 // day 1
 
 Set day01Entries(String contents) =>
     contents.trim().split('\n').map((str) => int.parse(str)).toSet();
 
-int day01(String contents) {
+int day01(int part, String contents) =>
+    (part == 1) ? day01_part1(contents) : day01_part2(contents);
+
+int day01_part1(String contents) {
   var entries = day01Entries(contents);
   for (var x in entries) {
     var y = 2020 - x;
@@ -62,7 +65,10 @@ int day01_part2(String data) {
 
 // day 2
 
-int day02(String contents) {
+int day02(int part, String contents) =>
+    (part == 1) ? day02_part1(contents) : day02_part2(contents);
+
+int day02_part1(String contents) {
   var lines = contents.trim().split('\n');
   var validPasswordCount = 0;
   RegExp exp = RegExp(r'^(\d+)-(\d+) (\w): (\w*)$');
@@ -148,7 +154,10 @@ int countTrees({Grid grid, int delta_x, int delta_y}) {
   return trees;
 }
 
-int day03(String contents) => countTrees(
+int day03(int part, String contents) =>
+    (part == 1) ? day03_part1(contents) : day03_part2(contents);
+
+int day03_part1(String contents) => countTrees(
       grid: Grid(contents),
       delta_x: 3,
       delta_y: 1,
@@ -174,7 +183,10 @@ int day03_part2(String contents) {
 
 // day 4
 
-int day04(String contents) => contents
+int day04(int part, String contents) =>
+    (part == 1) ? day04_part1(contents) : day04_part2(contents);
+
+int day04_part1(String contents) => contents
     .replaceAll(' ', '\n')
     .replaceAll(RegExp(r'cid:[^ \n]+[ \n]?'), '')
     .split('\n\n')
@@ -293,7 +305,10 @@ int day05_convert(String boardingPass) => boardingPass
     .map((letter) => {'B': 1, 'F': 0, 'R': 1, 'L': 0}[letter])
     .fold(0, (prev, element) => 2 * prev + element);
 
-int day05(String contents) =>
+int day05(int part, String contents) =>
+    (part == 1) ? day05_part1(contents) : day05_part2(contents);
+
+int day05_part1(String contents) =>
     contents.trim().split('\n').map(day05_convert).reduce((x, y) => max(x, y));
 
 int day05_part2(String contents) {
@@ -311,7 +326,10 @@ int day05_part2(String contents) {
 
 // day 6
 
-int day06(String contents) => contents
+int day06(int part, String contents) =>
+    (part == 1) ? day06_part1(contents) : day06_part2(contents);
+
+int day06_part1(String contents) => contents
     .split('\n\n')
     .map((block) => block.split('\n').join('').split('').toSet().length)
     .reduce((x, y) => x + y);
@@ -328,114 +346,171 @@ int day06_part2(String contents) => contents
 
 // day 7
 
-int day07(String data) {}
+int day07(int part, String data) =>
+    (part == 1) ? day07_part1(data) : day07_part2(data);
+
+int day07_part1(String data) {}
 
 int day07_part2(String data) {}
 
 // day 8
 
-int day08(String data) {}
+int day08(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day08_part1(String data) {}
 
 int day08_part2(String data) {}
 
 // day 9
 
-int day09(String data) {}
+int day09(int part, String data) =>
+    (part == 1) ? day09_part1(data) : day09_part2(data);
+
+int day09_part1(String data) {}
 
 int day09_part2(String data) {}
 
 // day 10
 
-int day10(String data) {}
+int day10(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day10_part1(String data) {}
 
 int day10_part2(String data) {}
 
 // day 11
 
-int day11(String data) {}
+int day11(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day11_part1(String data) {}
 
 int day11_part2(String data) {}
 
 // day 12
 
-int day12(String data) {}
+int day12(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day12_part1(String data) {}
 
 int day12_part2(String data) {}
 
 // day 13
 
-int day13(String data) {}
+int day13(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day13_part1(String data) {}
 
 int day13_part2(String data) {}
 
 // day 14
 
-int day14(String data) {}
+int day14(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day14_part1(String data) {}
 
 int day14_part2(String data) {}
 
 // day 15
 
-int day15(String data) {}
+int day15(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day15_part1(String data) {}
 
 int day15_part2(String data) {}
 
 // day 16
 
-int day16(String data) {}
+int day16(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day16_part1(String data) {}
 
 int day16_part2(String data) {}
 
 // day 17
 
-int day17(String data) {}
+int day17(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day17_part1(String data) {}
 
 int day17_part2(String data) {}
 
 // day 18
 
-int day18(String data) {}
+int day18(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day18_part1(String data) {}
 
 int day18_part2(String data) {}
 
 // day 19
 
-int day19(String data) {}
+int day19(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day19_part1(String data) {}
 
 int day19_part2(String data) {}
 
 // day 20
 
-int day20(String data) {}
+int day20(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day20_part1(String data) {}
 
 int day20_part2(String data) {}
 
 // day 21
 
-int day21(String data) {}
+int day21(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day21_part1(String data) {}
 
 int day21_part2(String data) {}
 
 // day 22
 
-int day22(String data) {}
+int day22(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day22_part1(String data) {}
 
 int day22_part2(String data) {}
 
 // day 23
 
-int day23(String data) {}
+int day23(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day23_part1(String data) {}
 
 int day23_part2(String data) {}
 
 // day 24
 
-int day24(String data) {}
+int day24(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day24_part1(String data) {}
 
 int day24_part2(String data) {}
 
 // day 25
 
-int day25(String data) {}
+int day25(int part, String data) =>
+    (part == 1) ? day08_part1(data) : day08_part2(data);
+
+int day25_part1(String data) {}
 
 int day25_part2(String data) {}
