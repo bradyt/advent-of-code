@@ -152,6 +152,11 @@ int day03_part2(String contents) {
   return result;
 }
 
-int day04(String contents) => 0;
+int day04(String contents) => contents
+    .replaceAll(' ', '\n')
+    .replaceAll(RegExp(r'cid:[^ \n]+[ \n]?'), '')
+    .split('\n\n')
+    .where((block) => block.trim().split('\n').length == 7)
+    .length;
 
 int day04_part2(String contents) => 0;

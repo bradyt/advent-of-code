@@ -54,7 +54,7 @@ void main() {
     });
     test('part 1', () {
       testDayPartExample(day: 4, part: 1, example: false);
-    }, skip: true);
+    });
     test('part 2 example', () {
       testDayPartExample(day: 4, part: 2);
     }, skip: true);
@@ -77,7 +77,7 @@ void testDayPartExample({int day, int part, bool example = true}) {
 
   // print('-' * 80);
   // print('day: $day, part: $part, example: $example');
-  // print('calculated: $calculatedSolution');
+  print('calculated: $calculatedSolution');
   // print('expected: $expectedSolution');
   assert(calculatedSolution == expectedSolution);
 }
