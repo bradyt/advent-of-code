@@ -62,6 +62,20 @@ void main() {
       testDayPartExample(day: 4, part: 2, example: false);
     }, skip: true);
   });
+  group('test day 5;', () {
+    test('part 1 examples', () {
+      expect(day05_convert('FBFBBFFRLR'), 357);
+      expect(day05_convert('BFFFBBFRRR'), 567);
+      expect(day05_convert('FFFBBBFRRR'), 119);
+      expect(day05_convert('BBFFBBFRLL'), 820);
+    });
+    test('part 1', () {
+      testDayPartExample(day: 5, part: 1, example: false);
+    });
+    test('part 2', () {
+      testDayPartExample(day: 5, part: 2, example: false);
+    });
+  });
 }
 
 void testDayPartExample({int day, int part, bool example = true}) {
@@ -77,7 +91,7 @@ void testDayPartExample({int day, int part, bool example = true}) {
 
   // print('-' * 80);
   // print('day: $day, part: $part, example: $example');
-  print('calculated: $calculatedSolution');
+  // print('calculated: $calculatedSolution');
   // print('expected: $expectedSolution');
   assert(calculatedSolution == expectedSolution);
 }

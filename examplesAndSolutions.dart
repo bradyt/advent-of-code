@@ -88,4 +88,8 @@ iyr:2011 ecl:brn hgt:59in''',
     partTwoExampleSolution: null,
     partTwoSolution: null,
   ),
+  5: ExamplesAndSolution(
+    partOneSolution: 935,
+    partTwoSolution: 743,
+  ),
 };

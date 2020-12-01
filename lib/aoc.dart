@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 String getFileContents(String file) => File(file).readAsStringSync();
 
@@ -12,6 +13,8 @@ int solution({int day, int part, String data}) {
       return (part == 1) ? day03(data) : day03_part2(data);
     case 4:
       return (part == 1) ? day04(data) : day04_part2(data);
+    case 5:
+      return (part == 1) ? day05(data) : day05_part2(data);
   }
 }
 
@@ -159,4 +162,103 @@ int day04(String contents) => contents
     .where((block) => block.trim().split('\n').length == 7)
     .length;
 
-int day04_part2(String contents) => 0;
+int day04_part2(String contents) {
+  var passports = contents.split('\n\n').map((block) => {
+        for (var pair in block
+            .replaceAll(' ', '\n')
+            .trim()
+            .split('\n')
+            .map((line) => line.split(':')))
+          pair[0]: pair[1]
+      });
+  // passports.forEach((passport) {
+  //   print('-' * 80);
+  //   print(passport);
+  //   print(validatePassport(passport));
+  // });
+
+  var result = passports.where((passport) => validatePassport(passport)).length;
+  // print(result);
+  return result;
+}
+
+// bool validateYear(String input, int lowerBound, int upperBound) {
+//   if (input == null) return false;
+//   int n = int.parse(input);
+//   return n >= lowerBound && n <= upperBound;
+// }
+
+bool validateYear(String str, int lowerBound, int upperBound) {
+  var match = RegExp(r'[0-9]{4}').firstMatch(str ?? '');
+  var valid;
+  if (match == null) {
+    valid = false;
+  } else {
+    int n = int.parse(match.group(0));
+
+    valid = n >= lowerBound && n <= upperBound;
+  }
+  return valid;
+}
+
+bool validatePassport(Map passport) {
+  var validByr = validateYear(passport['byr'], 1920, 2002);
+  var validIyr = validateYear(passport['iyr'], 2010, 2020);
+  var validEyr = validateYear(passport['eyr'], 2020, 2030);
+
+  var validHcl = RegExp(r'#[0-9a-f]{6}').hasMatch(passport['hcl'] ?? '');
+  var validEcl = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
+      .contains(passport['ecl']);
+  var validPid = RegExp(r'\d{9}').hasMatch(passport['pid'] ?? '');
+
+  var hgtMatch = RegExp(r'([0-9]+)(in|cm)').firstMatch(passport['hgt'] ?? '');
+  var validHgt;
+  if (hgtMatch == null) {
+    validHgt = false;
+  } else {
+    int n = int.parse(hgtMatch.group(1));
+
+    switch (hgtMatch.group(2)) {
+      case 'cm':
+        validHgt = n >= 150 && n <= 193;
+        break;
+      case 'in':
+        validHgt = true;
+        validHgt = n >= 59 && n <= 76;
+        break;
+      default:
+        validHgt = false;
+        break;
+    }
+  }
+
+  return validByr &&
+      validIyr &&
+      validEyr &&
+      validHgt &&
+      validHcl &&
+      validEcl &&
+      validPid;
+}
+
+int day05_convert(String boardingPass) =>
+    boardingPass
+        .split('')
+        .map((letter) => {'B': 1, 'F': 0, 'R': 1, 'L': 0}[letter])
+        .fold(0, (prev, element) => (prev + element) * 2) ~/
+    2;
+
+int day05(String contents) =>
+    contents.trim().split('\n').map(day05_convert).reduce((x, y) => max(x, y));
+
+int day05_part2(String contents) {
+  var sortedBoardingPasses =
+      contents.trim().split('\n').map(day05_convert).toList()..sort();
+  var lastBoardingPass = -1;
+  sortedBoardingPasses.forEach((boardingPass) {
+    if (boardingPass == lastBoardingPass + 2) {
+      return boardingPass - 1;
+    }
+    lastBoardingPass = boardingPass;
+  });
+}
