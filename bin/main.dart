@@ -6,7 +6,7 @@ import 'package:advent_of_code/data.dart';
 
 void main() {
   var day = DateTime.now().toUtc().subtract(Duration(hours: 5)).day;
-  var part = 2;
+  var part = (examplesAndSolutions[day].partTwoExampleSolution == null) ? 1 : 2;
   var data;
 
   data = examplesAndSolutions[day].example;
