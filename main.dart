@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main() {
-  day02();
+  day01_part2();
 }
 
 String getFileContents(String file) => File(file).readAsStringSync();
@@ -23,10 +23,28 @@ void day01() {
   }
 }
 
-void day02() {
-  var lines = getFileContents('day-02.txt')
+void day01_part2() {
+  var entries = getFileContents('day-01.txt')
       .trim()
-      .split('\n');
+      .split('\n')
+      .map((str) => int.parse(str));
+  for (var i = 0; i < entries.length; i++) {
+    var entry_i = entries.elementAt(i);
+    for (var j = i + 1; j < entries.length; j++) {
+      var entry_j = entries.elementAt(j);
+      for (var k = i + 1; k < entries.length; k++) {
+        var entry_k = entries.elementAt(k);
+        if (entry_i + entry_j + entry_k == 2020) {
+          print(entry_i * entry_j * entry_k);
+          exit(0);
+        }
+      }
+    }
+  }
+}
+
+void day02() {
+  var lines = getFileContents('day-02.txt').trim().split('\n');
   // var lines = '1-3 a: abcde\n'
   //         '1-3 b: cdefg\n'
   //         '2-9 c: ccccccccc'
