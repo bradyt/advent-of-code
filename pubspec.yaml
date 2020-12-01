@@ -1,0 +1,7 @@
+name: advent_of_code
+
+executables:
+  aoc: main
+
+dev_dependencies:
+  test:
