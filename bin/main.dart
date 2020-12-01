@@ -6,11 +6,11 @@ import 'package:advent_of_code/data.dart';
 
 void main() {
   var day = 7;
-  var part = 1;
+  var part = 2;
   var data;
 
   data = examplesAndSolutions[day].example;
-  // data = File('input/day-0$day.txt').readAsStringSync();
+  data = File('input/day-0$day.txt').readAsStringSync();
 
   print(solution(day: day, part: part, data: data));
 }

@@ -361,7 +361,7 @@ Map day07_parser(data) {
       var bagMatch;
       requiredContents.forEach((bags) {
         bagMatch = bagExp.firstMatch(bags);
-        map[bag][bagMatch.group(2)] = bagMatch.group(1);
+        map[bag][bagMatch.group(2)] = int.parse(bagMatch.group(1));
       });
     }
   });
@@ -403,7 +403,31 @@ int day07_part1(String data) {
   return visitedBags.length;
 }
 
-int day07_part2(String data) => null;
+class Day07HowManyBags {
+  Day07HowManyBags({Map rules})
+      : _rules = rules,
+        _cache = {};
+
+  final Map _rules;
+  final Map _cache;
+
+  int howManyBags(String bag) {
+    if (_cache.containsKey(bag)) {
+      return _cache[bag];
+    }
+    _cache[bag] = _rules[bag]
+        .entries
+        .map((entry) => entry.value * (1 + howManyBags(entry.key)))
+        .fold(0, (prev, element) => prev + element);
+    return _cache[bag];
+  }
+}
+
+int day07_part2(String data) {
+  var parsedData = day07_parser(data);
+  var howManyBags = Day07HowManyBags(rules: parsedData);
+  return howManyBags.howManyBags('shiny gold');
+}
 
 // day 8
 

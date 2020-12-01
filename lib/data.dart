@@ -127,8 +127,8 @@ faded blue bags contain no other bags.
 dotted black bags contain no other bags.''',
     partOneExampleSolution: 4,
     partOneSolution: 287,
-    partTwoExampleSolution: null,
-    partTwoSolution: null,
+    partTwoExampleSolution: 32,
+    partTwoSolution: 48160,
   ),
   08: ExamplesAndSolution(
     example: '''
