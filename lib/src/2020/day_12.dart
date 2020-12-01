@@ -1,3 +1,5 @@
+import 'package:ml_linalg/vector.dart';
+
 class Instruction {
   Instruction({this.action, this.value});
 

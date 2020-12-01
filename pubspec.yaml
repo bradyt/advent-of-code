@@ -4,6 +4,7 @@ executables:
   aoc: main
 
 dependencies:
+  ml_linalg:
   trotter:
 
 dev_dependencies:
