@@ -189,7 +189,7 @@ acc +6''',
     partOneExampleSolution: 7 * 5,
     partOneSolution: 2112,
     partTwoExampleSolution: 8,
-    partTwoSolution: null,
+    partTwoSolution: 3022415986688,
   ),
   11: ExamplesAndSolution(
     example: '''

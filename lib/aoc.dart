@@ -606,14 +606,33 @@ int day10_part1(String data) {
       Pair(
         (i == 0) ? 0 : adapters[i - 1],
         (i == length) ? joltageMax : adapters[i],
-      )
+      ),
   ].map((pair) => pair.second - pair.first);
 
   return differences.where((x) => x == 1).length *
       differences.where((x) => x == 3).length;
 }
 
-int day10_part2(String data) => null;
+int day10_part2(String data) {
+  var adapters = data.trim().split('\n').map((line) => int.parse(line)).toList()
+    ..sort();
+
+  var cache = {
+    -2: 0,
+    -1: 0,
+    0: 1,
+  };
+
+  for (var joltage in adapters) {
+    cache[joltage] = (cache[joltage - 1] ?? 0) +
+        (cache[joltage - 2] ?? 0) +
+        (cache[joltage - 3] ?? 0);
+
+    cache.remove(joltage - 3);
+  }
+
+  return cache[adapters.last];
+}
 
 // day 11
 
