@@ -10,7 +10,14 @@ void main() {
   var data;
 
   data = examplesAndSolutions[day].example;
-  data = File('input/day-${'$day'.padLeft(2, '0')}.txt').readAsStringSync();
+
+  var calculatedExampleSolution = solution(day: day, part: part, data: data);
+  var expectedExampleSolution =
+      examplesAndSolutions[day].solution(example: true, part: part);
+
+  if (calculatedExampleSolution == expectedExampleSolution) {
+    data = File('input/day-${'$day'.padLeft(2, '0')}.txt').readAsStringSync();
+  }
 
   print(solution(day: day, part: part, data: data));
 }
