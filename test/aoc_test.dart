@@ -89,7 +89,7 @@ void main() {
     });
     test('part 2', () {
       testDayPartExample(day: 5, part: 2, example: false);
-    }, skip: true);
+    });
   });
 }
 

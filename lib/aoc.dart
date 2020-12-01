@@ -215,7 +215,6 @@ bool validateHeight(String hgt) {
         validHgt = n >= 150 && n <= 193;
         break;
       case 'in':
-        validHgt = true;
         validHgt = n >= 59 && n <= 76;
         break;
       default:
@@ -248,13 +247,14 @@ int day05(String contents) =>
 int day05_part2(String contents) {
   var sortedBoardingPasses =
       contents.trim().split('\n').map(day05_convert).toList()..sort();
-  var lastBoardingPass = -1;
-  sortedBoardingPasses.forEach((boardingPass) {
+  var lastBoardingPass = sortedBoardingPasses[0] - 3;
+  var result;
+  for (var boardingPass in sortedBoardingPasses) {
     if (boardingPass == lastBoardingPass + 2) {
       return boardingPass - 1;
     }
     lastBoardingPass = boardingPass;
-  });
+  }
 }
 
 bool validate(String key, String value) {
