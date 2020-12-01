@@ -248,7 +248,6 @@ int day05_part2(String contents) {
   var sortedBoardingPasses =
       contents.trim().split('\n').map(day05_convert).toList()..sort();
   var lastBoardingPass = sortedBoardingPasses[0] - 3;
-  var result;
   for (var boardingPass in sortedBoardingPasses) {
     if (boardingPass == lastBoardingPass + 2) {
       return boardingPass - 1;
