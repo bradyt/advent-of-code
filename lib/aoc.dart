@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:trotter/trotter.dart';
@@ -349,168 +348,168 @@ int day06_part2(String contents) => contents
 int day07(int part, String data) =>
     (part == 1) ? day07_part1(data) : day07_part2(data);
 
-int day07_part1(String data) {}
+int day07_part1(String data) => null;
 
-int day07_part2(String data) {}
+int day07_part2(String data) => null;
 
 // day 8
 
 int day08(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day08_part1(String data) {}
+int day08_part1(String data) => null;
 
-int day08_part2(String data) {}
+int day08_part2(String data) => null;
 
 // day 9
 
 int day09(int part, String data) =>
     (part == 1) ? day09_part1(data) : day09_part2(data);
 
-int day09_part1(String data) {}
+int day09_part1(String data) => null;
 
-int day09_part2(String data) {}
+int day09_part2(String data) => null;
 
 // day 10
 
 int day10(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day10_part1(String data) {}
+int day10_part1(String data) => null;
 
-int day10_part2(String data) {}
+int day10_part2(String data) => null;
 
 // day 11
 
 int day11(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day11_part1(String data) {}
+int day11_part1(String data) => null;
 
-int day11_part2(String data) {}
+int day11_part2(String data) => null;
 
 // day 12
 
 int day12(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day12_part1(String data) {}
+int day12_part1(String data) => null;
 
-int day12_part2(String data) {}
+int day12_part2(String data) => null;
 
 // day 13
 
 int day13(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day13_part1(String data) {}
+int day13_part1(String data) => null;
 
-int day13_part2(String data) {}
+int day13_part2(String data) => null;
 
 // day 14
 
 int day14(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day14_part1(String data) {}
+int day14_part1(String data) => null;
 
-int day14_part2(String data) {}
+int day14_part2(String data) => null;
 
 // day 15
 
 int day15(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day15_part1(String data) {}
+int day15_part1(String data) => null;
 
-int day15_part2(String data) {}
+int day15_part2(String data) => null;
 
 // day 16
 
 int day16(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day16_part1(String data) {}
+int day16_part1(String data) => null;
 
-int day16_part2(String data) {}
+int day16_part2(String data) => null;
 
 // day 17
 
 int day17(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day17_part1(String data) {}
+int day17_part1(String data) => null;
 
-int day17_part2(String data) {}
+int day17_part2(String data) => null;
 
 // day 18
 
 int day18(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day18_part1(String data) {}
+int day18_part1(String data) => null;
 
-int day18_part2(String data) {}
+int day18_part2(String data) => null;
 
 // day 19
 
 int day19(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day19_part1(String data) {}
+int day19_part1(String data) => null;
 
-int day19_part2(String data) {}
+int day19_part2(String data) => null;
 
 // day 20
 
 int day20(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day20_part1(String data) {}
+int day20_part1(String data) => null;
 
-int day20_part2(String data) {}
+int day20_part2(String data) => null;
 
 // day 21
 
 int day21(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day21_part1(String data) {}
+int day21_part1(String data) => null;
 
-int day21_part2(String data) {}
+int day21_part2(String data) => null;
 
 // day 22
 
 int day22(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day22_part1(String data) {}
+int day22_part1(String data) => null;
 
-int day22_part2(String data) {}
+int day22_part2(String data) => null;
 
 // day 23
 
 int day23(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day23_part1(String data) {}
+int day23_part1(String data) => null;
 
-int day23_part2(String data) {}
+int day23_part2(String data) => null;
 
 // day 24
 
 int day24(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day24_part1(String data) {}
+int day24_part1(String data) => null;
 
-int day24_part2(String data) {}
+int day24_part2(String data) => null;
 
 // day 25
 
 int day25(int part, String data) =>
     (part == 1) ? day08_part1(data) : day08_part2(data);
 
-int day25_part1(String data) {}
+int day25_part1(String data) => null;
 
-int day25_part2(String data) {}
+int day25_part2(String data) => null;
