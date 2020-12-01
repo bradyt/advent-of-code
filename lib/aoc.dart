@@ -561,6 +561,7 @@ int day09_part1(String data) {
       return target;
     }
   }
+  throw Error;
 }
 
 int day09_part2(String data) {
@@ -578,6 +579,7 @@ int day09_part2(String data) {
       }
     }
   }
+  throw Error;
 }
 
 // day 10
