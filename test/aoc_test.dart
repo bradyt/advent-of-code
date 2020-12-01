@@ -41,6 +41,7 @@ void main() {
   });
   runTestGroup(day: 6);
   runTestGroup(day: 7);
+  runTestGroup(day: 8);
 }
 
 void runTestGroup({int day}) {

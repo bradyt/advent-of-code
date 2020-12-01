@@ -5,7 +5,7 @@ import 'package:advent_of_code/aoc.dart';
 import 'package:advent_of_code/data.dart';
 
 void main() {
-  var day = 7;
+  var day = 8;
   var part = 2;
   var data;
 

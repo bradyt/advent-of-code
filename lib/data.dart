@@ -132,11 +132,19 @@ dotted black bags contain no other bags.''',
   ),
   08: ExamplesAndSolution(
     example: '''
-''',
-    partOneExampleSolution: null,
-    partOneSolution: null,
-    partTwoExampleSolution: null,
-    partTwoSolution: null,
+nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6''',
+    partOneExampleSolution: 5,
+    partOneSolution: 1600,
+    partTwoExampleSolution: 8,
+    partTwoSolution: 1543,
   ),
   09: ExamplesAndSolution(
     example: '''
