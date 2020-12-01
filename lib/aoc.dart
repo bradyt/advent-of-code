@@ -3,24 +3,33 @@ import 'dart:math';
 
 import 'package:trotter/trotter.dart';
 
-int solution({int day, int part, String data}) {
-  switch (day) {
-    case 1:
-      return (part == 1) ? day01(data) : day01_part2(data);
-    case 2:
-      return (part == 1) ? day02(data) : day02_part2(data);
-    case 3:
-      return (part == 1) ? day03(data) : day03_part2(data);
-    case 4:
-      return (part == 1) ? day04(data) : day04_part2(data);
-    case 5:
-      return (part == 1) ? day05(data) : day05_part2(data);
-    case 6:
-      return (part == 1) ? day06(data) : day06_part2(data);
-    default:
-      throw Error;
-  }
-}
+int solution({int day, int part, String data}) => {
+      01: {1: day01, 2: day01_part2},
+      02: {1: day02, 2: day02_part2},
+      03: {1: day03, 2: day03_part2},
+      04: {1: day04, 2: day04_part2},
+      05: {1: day05, 2: day05_part2},
+      06: {1: day06, 2: day06_part2},
+      07: {1: day07, 2: day07_part2},
+      08: {1: day08, 2: day08_part2},
+      09: {1: day09, 2: day09_part2},
+      10: {1: day10, 2: day10_part2},
+      11: {1: day11, 2: day11_part2},
+      12: {1: day12, 2: day12_part2},
+      13: {1: day13, 2: day13_part2},
+      14: {1: day14, 2: day14_part2},
+      15: {1: day15, 2: day15_part2},
+      16: {1: day16, 2: day16_part2},
+      17: {1: day17, 2: day17_part2},
+      18: {1: day18, 2: day18_part2},
+      19: {1: day19, 2: day19_part2},
+      20: {1: day20, 2: day20_part2},
+      21: {1: day21, 2: day21_part2},
+      22: {1: day22, 2: day22_part2},
+      23: {1: day23, 2: day23_part2},
+      24: {1: day24, 2: day24_part2},
+      25: {1: day25, 2: day25_part2},
+    }[day][part](data);
 
 // day 1
 
@@ -316,3 +325,117 @@ int day06_part2(String contents) => contents
         .reduce((x, y) => x.intersection(y))
         .length)
     .reduce((x, y) => x + y);
+
+// day 7
+
+int day07(String data) {}
+
+int day07_part2(String data) {}
+
+// day 8
+
+int day08(String data) {}
+
+int day08_part2(String data) {}
+
+// day 9
+
+int day09(String data) {}
+
+int day09_part2(String data) {}
+
+// day 10
+
+int day10(String data) {}
+
+int day10_part2(String data) {}
+
+// day 11
+
+int day11(String data) {}
+
+int day11_part2(String data) {}
+
+// day 12
+
+int day12(String data) {}
+
+int day12_part2(String data) {}
+
+// day 13
+
+int day13(String data) {}
+
+int day13_part2(String data) {}
+
+// day 14
+
+int day14(String data) {}
+
+int day14_part2(String data) {}
+
+// day 15
+
+int day15(String data) {}
+
+int day15_part2(String data) {}
+
+// day 16
+
+int day16(String data) {}
+
+int day16_part2(String data) {}
+
+// day 17
+
+int day17(String data) {}
+
+int day17_part2(String data) {}
+
+// day 18
+
+int day18(String data) {}
+
+int day18_part2(String data) {}
+
+// day 19
+
+int day19(String data) {}
+
+int day19_part2(String data) {}
+
+// day 20
+
+int day20(String data) {}
+
+int day20_part2(String data) {}
+
+// day 21
+
+int day21(String data) {}
+
+int day21_part2(String data) {}
+
+// day 22
+
+int day22(String data) {}
+
+int day22_part2(String data) {}
+
+// day 23
+
+int day23(String data) {}
+
+int day23_part2(String data) {}
+
+// day 24
+
+int day24(String data) {}
+
+int day24_part2(String data) {}
+
+// day 25
+
+int day25(String data) {}
+
+int day25_part2(String data) {}

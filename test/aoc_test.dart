@@ -6,58 +6,12 @@ import '../examplesAndSolutions.dart';
 import '../lib/aoc.dart';
 
 void main() {
-  group('test day 1', () {
-    test('part 1 example', () {
-      testDayPartExample(day: 1, part: 1);
-    });
-    test('part 1', () {
-      testDayPartExample(day: 1, part: 1, example: false);
-    });
-    test('part 2 example', () {
-      testDayPartExample(day: 1, part: 2);
-    });
-    test('part 2', () {
-      testDayPartExample(day: 1, part: 2, example: false);
-    });
-  });
-  group('test day 2', () {
-    test('part 1 example', () {
-      testDayPartExample(day: 2, part: 1);
-    });
-    test('part 1', () {
-      testDayPartExample(day: 2, part: 1, example: false);
-    });
-    test('part 2 example', () {
-      testDayPartExample(day: 2, part: 2);
-    });
-    test('part 2', () {
-      testDayPartExample(day: 2, part: 2, example: false);
-    });
-  });
-  group('test day 3', () {
-    test('part 1 example', () {
-      testDayPartExample(day: 3, part: 1);
-    });
-    test('part 1', () {
-      testDayPartExample(day: 3, part: 1, example: false);
-    });
-    test('part 2 example', () {
-      testDayPartExample(day: 3, part: 2);
-    });
-    test('part 2', () {
-      testDayPartExample(day: 3, part: 2, example: false);
-    });
-  });
+  runTestGroup(day: 1);
+  runTestGroup(day: 2);
+  runTestGroup(day: 3);
   group('test day 4;', () {
-    test('part 1 example', () {
-      testDayPartExample(day: 4, part: 1);
-    });
-    test('part 1', () {
-      testDayPartExample(day: 4, part: 1, example: false);
-    });
-    test('part 2 example', () {
-      testDayPartExample(day: 4, part: 2);
-    }, skip: true);
+    runTest(4, part: 1, example: true);
+    runTest(4, part: 1);
     test('part 2 examples', () {
       expect(validate('byr', '2002'), true);
       expect(validate('byr', '2003'), false);
@@ -73,9 +27,7 @@ void main() {
       expect(validate('pid', '000000001'), true);
       expect(validate('pid', '0123456789'), false);
     });
-    test('part 2', () {
-      testDayPartExample(day: 4, part: 2, example: false);
-    });
+    runTest(4, part: 2);
   });
   group('test day 5;', () {
     test('part 1 examples', () {
@@ -84,30 +36,28 @@ void main() {
       expect(day05_convert('FFFBBBFRRR'), 119);
       expect(day05_convert('BBFFBBFRLL'), 820);
     });
-    test('part 1', () {
-      testDayPartExample(day: 5, part: 1, example: false);
-    });
-    test('part 2', () {
-      testDayPartExample(day: 5, part: 2, example: false);
-    });
+    runTest(5, part: 1);
+    runTest(5, part: 2);
   });
-  group('test day 6', () {
-    test('part 1 example', () {
-      testDayPartExample(day: 6, part: 1);
-    });
-    test('part 1', () {
-      testDayPartExample(day: 6, part: 1, example: false);
-    });
-    test('part 2 example', () {
-      testDayPartExample(day: 6, part: 2);
-    });
-    test('part 2', () {
-      testDayPartExample(day: 6, part: 2, example: false);
-    });
+  runTestGroup(day: 6);
+}
+
+void runTestGroup({int day}) {
+  group('test day $day', () {
+    runTest(day, part: 1, example: true);
+    runTest(day, part: 1);
+    runTest(day, part: 2, example: true);
+    runTest(day, part: 2);
   });
 }
 
-void testDayPartExample({int day, int part, bool example = true}) {
+void runTest(int day, {int part, bool example = false}) {
+  test(('Test part $part${(example == null) ? '' : ' example'}'), () {
+    testDayPartExample(day: day, part: part, example: example);
+  });
+}
+
+void testDayPartExample({int day, int part, bool example = false}) {
   var calculatedSolution = solution(
       day: day,
       part: part,

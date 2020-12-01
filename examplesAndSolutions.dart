@@ -114,4 +114,156 @@ b''',
     partTwoExampleSolution: 6,
     partTwoSolution: 3122,
   ),
+  07: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  08: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  09: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  10: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  11: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  12: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  13: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  14: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  15: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  16: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  17: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  18: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  19: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  20: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  21: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  22: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  23: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  24: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
+  25: ExamplesAndSolution(
+    example: '''
+''',
+    partOneExampleSolution: null,
+    partOneSolution: null,
+    partTwoExampleSolution: null,
+    partTwoSolution: null,
+  ),
 };
